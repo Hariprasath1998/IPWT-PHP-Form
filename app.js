@@ -12,6 +12,11 @@ mail.addEventListener('keyup', checkMail);
 submitEntry.addEventListener('click', submitEvent);
 checkEntries.addEventListener('click', getSubmissions);
 
+function clearFields(){
+    fname.value = '';
+    lname.value = '';
+    mail.value = '';
+}
 
 function checkAlpha(e) {
     const alphaRE = /^[a-zA-Z]+$/i;
@@ -79,7 +84,9 @@ function submitEvent(e){
     };
     xmlhttp.open("POST", "./php/include/writeUser.php?", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send(`firstName=${fname}&lastName=${lname}&email=${mail}`);}
+    xmlhttp.send(`firstName=${fname}&lastName=${lname}&email=${mail}`);
+}
+clearFields();
 }
 function getSubmissions(e){
     entriesDiv.innerHTML = '';
